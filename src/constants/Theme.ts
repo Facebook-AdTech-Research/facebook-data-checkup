@@ -3,6 +3,7 @@ export default {
     DEFAULT: '#172B4D',
     PRIMARY: '#2D88FF',
     FACEBOOK_GRAY: '#E3E4E9',
+    FACEBOOK_LIGHT_BLUE: '#E7F2FF',
     SECONDARY: '#F7FAFC',
     LABEL: '#FE2472',
     INFO: '#11CDEF',

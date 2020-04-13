@@ -31,19 +31,28 @@ const NotificationContent: React.FC<{
     );
   };
 
+  const renderContent = () => {
+    return (
+      <View style={styles.content}>
+        <Text style={styles.earlierText}>Earlier</Text>
+      </View>
+    );
+  };
+
   return (
     <View style={styles.flex}>
       <ScrollView
         onScroll={event => setScrollOffset(event.nativeEvent.contentOffset.y)}
         scrollEventThrottle={80}
         contentContainerStyle={[
-          styles.content,
+          styles.scrollContent,
           {
             paddingTop: insets.top
           }
         ]}
       >
         {renderHeader()}
+        {renderContent()}
       </ScrollView>
 
       <View
@@ -63,7 +72,7 @@ const styles = StyleSheet.create({
   flex: {
     flex: 1
   },
-  content: {
+  scrollContent: {
     flexGrow: 1
   },
   header: {
@@ -99,6 +108,15 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     shadowColor: theme.COLORS.BLACK,
     shadowOffset: { width: 0, height: -8 }
+  },
+  content: {
+    marginTop: 18,
+    flex: 1
+  },
+  earlierText: {
+    marginHorizontal: 18,
+    fontSize: 18,
+    fontWeight: 'bold'
   }
 });
 
