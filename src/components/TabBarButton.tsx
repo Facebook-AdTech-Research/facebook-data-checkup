@@ -17,7 +17,7 @@ const TabBarButton: React.FC<{
 
   return (
     <TouchableOpacity style={styles.wrapper} onPress={onTabPress} onLongPress={onTabLongPress}>
-      <View style={styles.container}>
+      <View style={[styles.container, isRouteActive && styles.activeContainer]}>
         <View style={styles.content}>{renderIcon({ route, focused: isRouteActive, tintColor: tintColor })}</View>
       </View>
     </TouchableOpacity>
@@ -30,7 +30,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  container: {},
+  container: {
+    width: '90%',
+    height: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  activeContainer: {
+    borderTopWidth: 2,
+    borderTopColor: theme.COLORS.PRIMARY
+  },
   content: {
     display: 'flex',
     flexDirection: 'row',
