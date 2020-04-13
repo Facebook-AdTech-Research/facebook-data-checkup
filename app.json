@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "expo-minimal-boilerplate",
-    "slug": "expo-minimal-boilerplate",
+    "name": "facebook-data-checkup",
+    "slug": "facebook-data-checkup",
     "privacy": "unlisted",
     "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
