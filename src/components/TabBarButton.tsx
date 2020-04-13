@@ -16,7 +16,7 @@ const TabBarButton: React.FC<{
   const tintColor = isRouteActive ? activeTintColor : inactiveTintColor;
 
   return (
-    <TouchableOpacity style={styles.wrapper} onPress={onTabPress} onLongPress={onTabLongPress}>
+    <TouchableOpacity style={styles.wrapper}>
       <View style={[styles.container, isRouteActive && styles.activeContainer]}>
         <View style={styles.content}>{renderIcon({ route, focused: isRouteActive, tintColor: tintColor })}</View>
       </View>
