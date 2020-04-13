@@ -5,7 +5,7 @@ import { getStatusBarHeight } from 'react-native-status-bar-height';
 const { width, height } = Dimensions.get('screen');
 
 export const StatusHeight = StatusBar.currentHeight || getStatusBarHeight();
-export const HeaderHeight = 0;
+export const HeaderHeight = 64;
 export const iPhoneX = () => Platform.OS === 'ios' && (height === 812 || width === 812);
 export const TabBarHeight = 52;
 export const NavigationHeight = iPhoneX() ? 16 : 0;

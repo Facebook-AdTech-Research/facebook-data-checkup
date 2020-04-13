@@ -5,6 +5,7 @@ import CheckListButton from './CheckListButton';
 import EndCapButton from './EndCapButton';
 import FadeModal from './FadeModal';
 import Ghost from './Ghost';
+import Header from './Header';
 import Icon from './Icon';
 import IconBadge from './IconBadge';
 import Interceptor from './Interceptor';
@@ -24,6 +25,7 @@ export {
   EndCapButton,
   FadeModal,
   Ghost,
+  Header,
   Icon,
   IconBadge,
   Interceptor,
