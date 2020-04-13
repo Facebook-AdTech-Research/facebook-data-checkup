@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import {
   FontAwesome,
+  FontAwesome5,
   Ionicons,
   Feather,
   AntDesign,
@@ -20,6 +21,8 @@ const Icon: React.FC<{
   switch (family) {
     case 'FontAwesome':
       return <FontAwesome style={style} name={name} size={size} color={color} />;
+    case 'FontAwesome5':
+      return <FontAwesome5 style={style} name={name} size={size} color={color} />;
     case 'Feather':
       return <Feather style={style} name={name} size={size} color={color} />;
     case 'AntDesign':
