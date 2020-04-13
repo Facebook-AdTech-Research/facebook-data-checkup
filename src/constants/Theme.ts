@@ -2,6 +2,7 @@ export default {
   COLORS: {
     DEFAULT: '#172B4D',
     PRIMARY: '#2D88FF',
+    FACEBOOK_GRAY: '#E3E4E9',
     SECONDARY: '#F7FAFC',
     LABEL: '#FE2472',
     INFO: '#11CDEF',

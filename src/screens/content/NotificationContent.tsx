@@ -1,11 +1,11 @@
 import React from 'react';
-import { StyleSheet, Dimensions, View, ScrollView } from 'react-native';
+import { StyleSheet, Dimensions, View, ScrollView, TouchableOpacity } from 'react-native';
 import { useSafeArea } from 'react-native-safe-area-context';
 
 import { theme } from '@constants';
 import { HeaderHeight } from '@services/utils';
 import { NavigationTypes } from '@types';
-import { Text } from '@components';
+import { Text, Icon } from '@components';
 
 const NotificationContent: React.FC<{
   navigation: NavigationTypes.ParamType;
@@ -18,6 +18,11 @@ const NotificationContent: React.FC<{
     return (
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Notifications</Text>
+        <TouchableOpacity>
+          <View style={styles.searchButton}>
+            <Icon family="FontAwesome" name="search" size={22} color={theme.COLORS.BLACK} />
+          </View>
+        </TouchableOpacity>
       </View>
     );
   };
@@ -63,11 +68,23 @@ const styles = StyleSheet.create({
     paddingTop: 6,
     paddingHorizontal: 18,
     display: 'flex',
-    justifyContent: 'center'
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between'
   },
   headerTitle: {
     fontSize: 30,
     fontWeight: 'bold'
+  },
+  searchButton: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: theme.COLORS.FACEBOOK_GRAY,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingBottom: 3
   },
   headerOverlay: {
     position: 'absolute',
