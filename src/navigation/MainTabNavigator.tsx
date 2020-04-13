@@ -81,24 +81,24 @@ MenuStack.navigationOptions = ({ navigation }) => ({
 
 const styles = StyleSheet.create({
   iconHome: {
-    width: 28,
-    height: 28
+    width: 30,
+    height: 30
   },
   iconUser: {
-    width: 28,
-    height: 28
+    width: 30,
+    height: 30
   },
   iconGroup: {
-    width: 28,
-    height: 28
+    width: 30,
+    height: 30
   },
   iconBell: {
-    width: 28,
-    height: 28
+    width: 30,
+    height: 30
   },
   iconMenu: {
-    width: 28,
-    height: 28
+    width: 30,
+    height: 30
   }
 });
 
@@ -111,6 +111,7 @@ export default createBottomTabNavigator(
     MenuStack
   },
   {
+    initialRouteName: 'NotificationStack',
     tabBarComponent: TabBar,
     tabBarOptions: {
       activeTintColor: theme.COLORS.BLACK,

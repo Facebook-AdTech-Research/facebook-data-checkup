@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { useSafeArea } from 'react-native-safe-area-context';
 
+import { TabBarHeight } from '@services/utils';
 import { theme } from '@constants';
 import TabBarButton from '@components/TabBarButton';
 import { NavigationTypes } from '@types';
@@ -63,9 +64,8 @@ const styles = StyleSheet.create({
     backgroundColor: theme.COLORS.WHITE
   },
   container: {
-    flexDirection: 'row',
-    height: 48,
-    paddingHorizontal: 24
+    height: TabBarHeight,
+    flexDirection: 'row'
   }
 });
 
