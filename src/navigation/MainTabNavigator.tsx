@@ -1,12 +1,11 @@
 import React from 'react';
+import { StyleSheet, View, Image } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
-import { theme } from '@constants';
+import { theme, Images } from '@constants';
 import { Icon, TabBar } from '@components';
-import { HomeScreen, AboutScreen, LoginScreen } from '@screens';
-
-// HOME
+import { HomeScreen, UserScreen, GroupScreen, NotificationScreen, MenuScreen } from '@screens';
 
 const HomeStack = createStackNavigator({
   Map: {
@@ -21,46 +20,95 @@ HomeStack.navigationOptions = ({ navigation }) => ({
   tabBarLabel: 'Home',
   activeTintColor: 'white',
   inactiveTintColor: 'black',
-  tabBarIcon: ({ tintColor }) => <Icon name="home" family="Feather" color={tintColor} size={18} />
+  tabBarIcon: ({ tintColor }) => <Image style={styles.iconHome} source={Images.IconHome} resizeMode="contain" />
 });
 
-// ABOUT
-
-const AboutStack = createStackNavigator({
+const UserStack = createStackNavigator({
   Profile: {
-    screen: AboutScreen,
+    screen: UserScreen,
     navigationOptions: ({ navigation }) => ({
       header: null
     })
   }
 });
 
-AboutStack.navigationOptions = ({ navigation }) => ({
-  tabBarLabel: 'About',
-  tabBarIcon: ({ tintColor }) => <Icon name="info" family="Feather" color={tintColor} size={18} />
+UserStack.navigationOptions = ({ navigation }) => ({
+  tabBarLabel: 'Profile',
+  tabBarIcon: ({ tintColor }) => <Image style={styles.iconUser} source={Images.IconUser} resizeMode="contain" />
 });
 
-// LOGIN
-
-const LoginStack = createStackNavigator({
+const GroupStack = createStackNavigator({
   Profile: {
-    screen: LoginScreen,
+    screen: GroupScreen,
     navigationOptions: ({ navigation }) => ({
       header: null
     })
   }
 });
 
-LoginStack.navigationOptions = ({ navigation }) => ({
-  tabBarLabel: 'Login',
-  tabBarIcon: ({ tintColor }) => <Icon name="user" family="Feather" color={tintColor} size={18} />
+GroupStack.navigationOptions = ({ navigation }) => ({
+  tabBarLabel: 'Groups',
+  tabBarIcon: ({ tintColor }) => <Image style={styles.iconGroup} source={Images.IconGroup} resizeMode="contain" />
+});
+
+const NotificationStack = createStackNavigator({
+  Profile: {
+    screen: NotificationScreen,
+    navigationOptions: ({ navigation }) => ({
+      header: null
+    })
+  }
+});
+
+NotificationStack.navigationOptions = ({ navigation }) => ({
+  tabBarLabel: 'Notifications',
+  tabBarIcon: ({ tintColor }) => <Image style={styles.iconBell} source={Images.IconBell} resizeMode="contain" />
+});
+
+const MenuStack = createStackNavigator({
+  Profile: {
+    screen: MenuScreen,
+    navigationOptions: ({ navigation }) => ({
+      header: null
+    })
+  }
+});
+
+MenuStack.navigationOptions = ({ navigation }) => ({
+  tabBarLabel: 'Menu',
+  tabBarIcon: ({ tintColor }) => <Image style={styles.iconMenu} source={Images.IconMenu} resizeMode="contain" />
+});
+
+const styles = StyleSheet.create({
+  iconHome: {
+    width: 28,
+    height: 28
+  },
+  iconUser: {
+    width: 28,
+    height: 28
+  },
+  iconGroup: {
+    width: 28,
+    height: 28
+  },
+  iconBell: {
+    width: 28,
+    height: 28
+  },
+  iconMenu: {
+    width: 28,
+    height: 28
+  }
 });
 
 export default createBottomTabNavigator(
   {
     HomeStack,
-    AboutStack,
-    LoginStack
+    UserStack,
+    GroupStack,
+    NotificationStack,
+    MenuStack
   },
   {
     tabBarComponent: TabBar,
