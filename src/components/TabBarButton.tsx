@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity } from 'react-native';
 
-import Text from '@components/Text';
 import { theme } from '@constants';
 
 const TabBarButton: React.FC<{
@@ -31,17 +30,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  container: {
-    paddingVertical: 8
-  },
+  container: {},
   content: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center'
   },
-  label: {
-    fontFamily: 'Montserrat-SemiBold'
-  }
+  label: {}
 });
 
 export default TabBarButton;
