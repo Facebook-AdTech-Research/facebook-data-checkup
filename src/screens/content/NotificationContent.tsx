@@ -5,7 +5,7 @@ import { theme } from '@constants';
 import { Text } from '@components';
 import { NavigationTypes } from '@types';
 
-const LoginContent: React.FC<{
+const NotificationContent: React.FC<{
   navigation: NavigationTypes.ParamType;
 }> = ({ navigation }) => {
   return (
@@ -29,4 +29,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default LoginContent;
+export default NotificationContent;

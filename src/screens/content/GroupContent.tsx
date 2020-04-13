@@ -5,7 +5,7 @@ import { theme } from '@constants';
 import { Text } from '@components';
 import { NavigationTypes } from '@types';
 
-const AboutContent: React.FC<{
+const GroupContent: React.FC<{
   navigation: NavigationTypes.ParamType;
 }> = ({ navigation }) => {
   return (
@@ -29,4 +29,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default AboutContent;
+export default GroupContent;

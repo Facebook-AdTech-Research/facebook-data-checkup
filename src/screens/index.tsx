@@ -1,5 +1,7 @@
-import LoginScreen from './LoginScreen';
 import HomeScreen from './HomeScreen';
-import AboutScreen from './AboutScreen';
+import UserScreen from './UserScreen';
+import GroupScreen from './GroupScreen';
+import NotificationScreen from './NotificationScreen';
+import MenuScreen from './MenuScreen';
 
-export { LoginScreen, HomeScreen, AboutScreen };
+export { HomeScreen, UserScreen, GroupScreen, NotificationScreen, MenuScreen };
