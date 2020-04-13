@@ -18,12 +18,13 @@ const Icon: React.FC<{
   size: number;
   color: string;
   style?: StyleProp<ViewStyle>;
-}> = ({ name, family, size, color, style }) => {
+  solid?: boolean;
+}> = ({ name, family, size, color, style, solid = false }) => {
   switch (family) {
     case 'FontAwesome':
       return <FontAwesome style={style} name={name} size={size} color={color} />;
     case 'FontAwesome5':
-      return <FontAwesome5 style={style} name={name} size={size} color={color} />;
+      return <FontAwesome5 style={style} name={name} size={size} color={color} solid={solid} />;
     case 'Feather':
       return <Feather style={style} name={name} size={size} color={color} />;
     case 'AntDesign':
