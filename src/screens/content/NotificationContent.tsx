@@ -12,6 +12,8 @@ const NotificationContent: React.FC<{
 }> = ({ navigation }) => {
   const insets = useSafeArea();
 
+  const [scrollOffset, setScrollOffset] = React.useState<number>(0);
+
   const renderHeader = () => {
     return (
       <View style={styles.header}>
@@ -23,6 +25,8 @@ const NotificationContent: React.FC<{
   return (
     <View style={styles.flex}>
       <ScrollView
+        onScroll={event => setScrollOffset(event.nativeEvent.contentOffset.y)}
+        scrollEventThrottle={80}
         contentContainerStyle={[
           styles.content,
           {
@@ -32,6 +36,16 @@ const NotificationContent: React.FC<{
       >
         {renderHeader()}
       </ScrollView>
+
+      <View
+        style={[
+          styles.headerOverlay,
+          {
+            height: insets.top,
+            shadowOpacity: scrollOffset > 0 ? (scrollOffset > 30 ? 1.0 : scrollOffset / 30) : 0
+          }
+        ]}
+      />
     </View>
   );
 };
@@ -54,6 +68,16 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 30,
     fontWeight: 'bold'
+  },
+  headerOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: theme.COLORS.WHITE,
+    shadowRadius: 8,
+    shadowColor: theme.COLORS.BLACK,
+    shadowOffset: { width: 0, height: -8 }
   }
 });
 
