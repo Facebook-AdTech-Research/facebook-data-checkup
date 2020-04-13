@@ -12,7 +12,7 @@ import { setTopLevelNavigator } from '@navigation/NavigationService';
 
 enableScreens();
 
-const assetImages: Array<any> = [];
+const assetImages: Array<any> = [Images.IconHome, Images.IconUser, Images.IconGroup, Images.IconBell, Images.IconMenu];
 
 function cacheImages(images: any) {
   return images.map((image: any) => {
@@ -28,15 +28,7 @@ const App = () => {
   const [isLoadingComplete, setIsLoadingComplete] = React.useState(false);
 
   const _loadResourcesAsync = async () => {
-    await Promise.all([
-      ...cacheImages(assetImages),
-      Font.loadAsync({
-        OpenSans: require('../assets/font/OpenSans-Regular.ttf'),
-        'OpenSans-Bold': require('../assets/font/OpenSans-Bold.ttf'),
-        'OpenSans-SemiBold': require('../assets/font/OpenSans-SemiBold.ttf'),
-        'OpenSans-Light': require('../assets/font/OpenSans-Light.ttf')
-      })
-    ]);
+    await Promise.all([...cacheImages(assetImages), Font.loadAsync({})]);
   };
 
   const _handleLoadingError = (error: any) => {
