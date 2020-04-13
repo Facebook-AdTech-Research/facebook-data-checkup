@@ -14,6 +14,10 @@ const NotificationContent: React.FC<{
 
   const [scrollOffset, setScrollOffset] = React.useState<number>(0);
 
+  const openCheckUp = () => {
+    navigation.navigate('CheckUp');
+  };
+
   const renderHeader = () => {
     return (
       <View style={styles.header}>

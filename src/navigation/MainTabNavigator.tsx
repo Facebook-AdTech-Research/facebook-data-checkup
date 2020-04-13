@@ -5,10 +5,10 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import { theme, Images } from '@constants';
 import { Icon, TabBar } from '@components';
-import { HomeScreen, UserScreen, GroupScreen, NotificationScreen, MenuScreen } from '@screens';
+import { HomeScreen, UserScreen, GroupScreen, NotificationScreen, MenuScreen, CheckUpScreen } from '@screens';
 
 const HomeStack = createStackNavigator({
-  Map: {
+  Home: {
     screen: HomeScreen,
     navigationOptions: ({ navigation }) => ({
       header: null
@@ -18,13 +18,11 @@ const HomeStack = createStackNavigator({
 
 HomeStack.navigationOptions = ({ navigation }) => ({
   tabBarLabel: 'Home',
-  activeTintColor: 'white',
-  inactiveTintColor: 'black',
   tabBarIcon: ({ tintColor }) => <Image style={styles.iconHome} source={Images.IconHome} resizeMode="contain" />
 });
 
 const UserStack = createStackNavigator({
-  Profile: {
+  User: {
     screen: UserScreen,
     navigationOptions: ({ navigation }) => ({
       header: null
@@ -38,7 +36,7 @@ UserStack.navigationOptions = ({ navigation }) => ({
 });
 
 const GroupStack = createStackNavigator({
-  Profile: {
+  Group: {
     screen: GroupScreen,
     navigationOptions: ({ navigation }) => ({
       header: null
@@ -52,8 +50,14 @@ GroupStack.navigationOptions = ({ navigation }) => ({
 });
 
 const NotificationStack = createStackNavigator({
-  Profile: {
+  Notification: {
     screen: NotificationScreen,
+    navigationOptions: ({ navigation }) => ({
+      header: null
+    })
+  },
+  CheckUp: {
+    screen: CheckUpScreen,
     navigationOptions: ({ navigation }) => ({
       header: null
     })
@@ -66,7 +70,7 @@ NotificationStack.navigationOptions = ({ navigation }) => ({
 });
 
 const MenuStack = createStackNavigator({
-  Profile: {
+  Menu: {
     screen: MenuScreen,
     navigationOptions: ({ navigation }) => ({
       header: null
