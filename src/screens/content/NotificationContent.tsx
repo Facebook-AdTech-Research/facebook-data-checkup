@@ -33,7 +33,7 @@ const NotificationContent: React.FC<{
 
   const renderNotification = (name: string, time: string, unread: boolean) => {
     return (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={openCheckUp}>
         <View
           style={[
             styles.notification,
@@ -54,7 +54,7 @@ const NotificationContent: React.FC<{
           </View>
 
           <TouchableOpacity>
-            <Icon family="MaterialCommunityIcons" name="dots-horizontal" size={32} color={theme.COLORS.DARK_GRAY} />
+            <Icon family="Entypo" name="dots-three-horizontal" size={24} color={theme.COLORS.DARK_GRAY} />
           </TouchableOpacity>
         </View>
       </TouchableOpacity>

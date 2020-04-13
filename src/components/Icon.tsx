@@ -7,6 +7,7 @@ import {
   Feather,
   AntDesign,
   Octicons,
+  Entypo,
   MaterialIcons,
   MaterialCommunityIcons
 } from '@expo/vector-icons';
@@ -35,6 +36,8 @@ const Icon: React.FC<{
       return <MaterialCommunityIcons style={style} name={name} size={size} color={color} />;
     case 'Ionicons':
       return <Ionicons style={style} name={name} size={size} color={color} />;
+    case 'Entypo':
+      return <Entypo style={style} name={name} size={size} color={color} />;
     default:
       return <Feather style={style} name={name} size={size} color={color} />;
   }
