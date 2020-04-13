@@ -44,6 +44,9 @@ const NotificationContent: React.FC<{
         >
           <View style={styles.notificationImageArea}>
             <View style={styles.notificationImage}></View>
+            <View style={styles.notificationType}>
+              <Icon family="FontAwesome5" name="user" size={16} color={theme.COLORS.WHITE} solid={true} />
+            </View>
           </View>
 
           <View style={styles.notificationTextArea}>
@@ -172,6 +175,11 @@ const styles = StyleSheet.create({
     height: 76,
     borderRadius: 38,
     backgroundColor: theme.COLORS.FACEBOOK_GRAY
+  },
+  notificationType: {
+    position: 'absolute',
+    bottom: 0,
+    right: 0
   },
   notificationTextArea: {
     flexGrow: 1,
