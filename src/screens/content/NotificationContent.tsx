@@ -31,10 +31,45 @@ const NotificationContent: React.FC<{
     );
   };
 
+  const renderNotification = (name: string, time: string, unread: boolean) => {
+    return (
+      <TouchableOpacity>
+        <View
+          style={[
+            styles.notification,
+            unread && {
+              backgroundColor: theme.COLORS.FACEBOOK_LIGHT_BLUE
+            }
+          ]}
+        >
+          <View style={styles.notificationImageArea}>
+            <View style={styles.notificationImage}></View>
+          </View>
+
+          <View style={styles.notificationTextArea}>
+            <Text style={styles.notificationContent}>
+              <Text style={styles.boldText}>{name}</Text> accepted your friend request.
+            </Text>
+            <Text style={styles.notificationTime}>{time}</Text>
+          </View>
+
+          <TouchableOpacity>
+            <Icon family="MaterialCommunityIcons" name="dots-horizontal" size={32} color={theme.COLORS.DARK_GRAY} />
+          </TouchableOpacity>
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
   const renderContent = () => {
     return (
       <View style={styles.content}>
         <Text style={styles.earlierText}>Earlier</Text>
+
+        {renderNotification('Dillon Korman', '2d', true)}
+        {renderNotification('Jenny McKendry', '2d', false)}
+        {renderNotification('Jen Wu', '2d', false)}
+        {renderNotification('Toni Pantone', '2d', false)}
       </View>
     );
   };
@@ -115,8 +150,45 @@ const styles = StyleSheet.create({
   },
   earlierText: {
     marginHorizontal: 18,
+    marginBottom: 4,
     fontSize: 18,
     fontWeight: 'bold'
+  },
+  notification: {
+    width: '100%',
+    height: 94,
+    paddingHorizontal: 18,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  notificationImageArea: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  notificationImage: {
+    width: 76,
+    height: 76,
+    borderRadius: 38,
+    backgroundColor: theme.COLORS.FACEBOOK_GRAY
+  },
+  notificationTextArea: {
+    flexGrow: 1,
+    flexShrink: 1,
+    paddingHorizontal: 14
+  },
+  notificationContent: {
+    fontSize: 17,
+    fontWeight: '300'
+  },
+  notificationTime: {
+    fontSize: 13,
+    fontWeight: '300',
+    color: theme.COLORS.GRAY
+  },
+  boldText: {
+    fontWeight: '500'
   }
 });
 
