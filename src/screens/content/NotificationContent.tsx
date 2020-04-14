@@ -24,7 +24,7 @@ const NotificationContent: React.FC<{
         <Text style={styles.headerTitle}>Notifications</Text>
         <TouchableOpacity>
           <View style={styles.searchButton}>
-            <Icon family="FontAwesome" name="search" size={22} color={theme.COLORS.BLACK} />
+            <Icon family="FontAwesome" name="search" size={20} color={theme.COLORS.BLACK} />
           </View>
         </TouchableOpacity>
       </View>
@@ -53,7 +53,7 @@ const NotificationContent: React.FC<{
                   style={styles.notificationTypeIcon}
                   family="FontAwesome5"
                   name="user"
-                  size={16}
+                  size={14}
                   color={theme.COLORS.WHITE}
                   solid={true}
                 />
@@ -69,7 +69,7 @@ const NotificationContent: React.FC<{
           </View>
 
           <TouchableOpacity>
-            <Icon family="Entypo" name="dots-three-horizontal" size={24} color={theme.COLORS.DARK_GRAY} />
+            <Icon family="Entypo" name="dots-three-horizontal" size={21} color={theme.COLORS.DARK_GRAY} />
           </TouchableOpacity>
         </View>
       </TouchableOpacity>
@@ -83,8 +83,8 @@ const NotificationContent: React.FC<{
 
         {renderNotification(Images.DillonKorman, 'Dillon Korman', '2d', false)}
         {renderNotification(Images.JennyMcKendry, 'Jenny McKendry', '2d', false)}
-        {renderNotification(Images.JenWu, 'Jen Wu', '2d', false)}
-        {renderNotification(Images.ToniPantone, 'Toni Pantone', '2d', false)}
+        {renderNotification(Images.JenWu, 'Jen Wu', '2d', true)}
+        {renderNotification(Images.ToniPantone, 'Toni Pantone', '2d', true)}
       </View>
     );
   };
@@ -128,21 +128,21 @@ const styles = StyleSheet.create({
   header: {
     width: '100%',
     height: HeaderHeight,
-    paddingTop: 6,
-    paddingHorizontal: 18,
+    paddingTop: 2,
+    paddingHorizontal: 16,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between'
   },
   headerTitle: {
-    fontSize: 30,
+    fontSize: 27,
     fontWeight: 'bold'
   },
   searchButton: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 36,
+    height: 36,
+    borderRadius: 18,
     backgroundColor: theme.COLORS.FACEBOOK_GRAY,
     display: 'flex',
     justifyContent: 'center',
@@ -160,19 +160,19 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: -8 }
   },
   content: {
-    marginTop: 18,
+    marginTop: 15,
     flex: 1
   },
   earlierText: {
-    marginHorizontal: 18,
+    marginHorizontal: 16,
     marginBottom: 4,
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: 'bold'
   },
   notification: {
     width: '100%',
-    height: 94,
-    paddingHorizontal: 18,
+    height: 85,
+    paddingHorizontal: 16,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center'
@@ -183,9 +183,11 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   notificationImageWrapper: {
-    width: 76,
-    height: 76,
-    borderRadius: 38,
+    width: 70,
+    height: 70,
+    borderRadius: 35,
+    borderColor: theme.COLORS.BORDER,
+    borderWidth: 1,
     overflow: 'hidden'
   },
   notificationImage: {
@@ -194,23 +196,23 @@ const styles = StyleSheet.create({
   },
   notificationTypeWrapper: {
     position: 'absolute',
-    bottom: 0,
-    right: 0,
+    bottom: -2,
+    right: -2,
     shadowOpacity: 0.2,
     shadowRadius: 2,
     shadowOffset: { width: 0, height: 1 },
     shadowColor: theme.COLORS.BLACK
   },
   notificationType: {
-    width: 32,
-    height: 32,
-    borderRadius: 16,
+    width: 28,
+    height: 28,
+    borderRadius: 15,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
   },
   notificationTypeIcon: {
-    shadowOpacity: 0.3,
+    shadowOpacity: 0.1,
     shadowRadius: 1,
     shadowOffset: { width: 0, height: 1 },
     shadowColor: theme.COLORS.BLACK
@@ -218,19 +220,19 @@ const styles = StyleSheet.create({
   notificationTextArea: {
     flexGrow: 1,
     flexShrink: 1,
-    paddingHorizontal: 14
+    paddingHorizontal: 12
   },
   notificationContent: {
-    fontSize: 17,
-    fontWeight: '300'
+    fontSize: 15,
+    lineHeight: 20
   },
   notificationTime: {
-    fontSize: 13,
-    fontWeight: '300',
+    marginTop: 2,
+    fontSize: 12,
     color: theme.COLORS.GRAY
   },
   boldText: {
-    fontWeight: '500'
+    fontWeight: '600'
   }
 });
 

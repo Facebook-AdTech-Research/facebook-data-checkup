@@ -85,24 +85,24 @@ MenuStack.navigationOptions = ({ navigation }) => ({
 
 const styles = StyleSheet.create({
   iconHome: {
-    width: 30,
-    height: 30
+    width: 27,
+    height: 27
   },
   iconUser: {
-    width: 30,
-    height: 30
+    width: 27,
+    height: 27
   },
   iconGroup: {
-    width: 30,
-    height: 30
+    width: 27,
+    height: 27
   },
   iconBell: {
-    width: 30,
-    height: 30
+    width: 27,
+    height: 27
   },
   iconMenu: {
-    width: 30,
-    height: 30
+    width: 27,
+    height: 27
   }
 });
 
