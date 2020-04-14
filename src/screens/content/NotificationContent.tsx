@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyleSheet, Dimensions, View, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { useSafeArea } from 'react-native-safe-area-context';
 
-import { theme } from '@constants';
+import { theme, Images } from '@constants';
 import { HeaderHeight } from '@services/utils';
 import { NavigationTypes } from '@types';
 import { Text, Icon, GradientView } from '@components';
@@ -31,7 +31,7 @@ const NotificationContent: React.FC<{
     );
   };
 
-  const renderNotification = (name: string, time: string, unread: boolean) => {
+  const renderNotification = (image: any, name: string, time: string, unread: boolean) => {
     return (
       <TouchableOpacity onPress={openCheckUp}>
         <View
@@ -43,7 +43,9 @@ const NotificationContent: React.FC<{
           ]}
         >
           <View style={styles.notificationImageArea}>
-            <View style={styles.notificationImage}></View>
+            <View style={styles.notificationImageWrapper}>
+              <Image style={styles.notificationImage} source={image} resizeMode="cover" />
+            </View>
 
             <View style={styles.notificationTypeWrapper}>
               <GradientView style={styles.notificationType} colors={theme.GRADIENT.BLUE} end={[0, 1]}>
@@ -79,10 +81,10 @@ const NotificationContent: React.FC<{
       <View style={styles.content}>
         <Text style={styles.earlierText}>Earlier</Text>
 
-        {renderNotification('Dillon Korman', '2d', true)}
-        {renderNotification('Jenny McKendry', '2d', false)}
-        {renderNotification('Jen Wu', '2d', false)}
-        {renderNotification('Toni Pantone', '2d', false)}
+        {renderNotification(Images.DillonKorman, 'Dillon Korman', '2d', false)}
+        {renderNotification(Images.JennyMcKendry, 'Jenny McKendry', '2d', false)}
+        {renderNotification(Images.JenWu, 'Jen Wu', '2d', false)}
+        {renderNotification(Images.ToniPantone, 'Toni Pantone', '2d', false)}
       </View>
     );
   };
@@ -180,11 +182,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  notificationImage: {
+  notificationImageWrapper: {
     width: 76,
     height: 76,
     borderRadius: 38,
-    backgroundColor: theme.COLORS.FACEBOOK_GRAY
+    overflow: 'hidden'
+  },
+  notificationImage: {
+    width: '100%',
+    height: '100%'
   },
   notificationTypeWrapper: {
     position: 'absolute',

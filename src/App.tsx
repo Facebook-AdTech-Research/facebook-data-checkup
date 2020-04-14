@@ -12,7 +12,18 @@ import { setTopLevelNavigator } from '@navigation/NavigationService';
 
 enableScreens();
 
-const assetImages: Array<any> = [Images.IconHome, Images.IconUser, Images.IconGroup, Images.IconBell, Images.IconMenu];
+const assetImages: Array<any> = [
+  Images.IconHome,
+  Images.IconUser,
+  Images.IconGroup,
+  Images.IconBell,
+  Images.IconMenu,
+  Images.DillonKorman,
+  Images.JeffTaylorChang,
+  Images.JennyMcKendry,
+  Images.JenWu,
+  Images.ToniPantone
+];
 
 function cacheImages(images: any) {
   return images.map((image: any) => {
