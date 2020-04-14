@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   title: {
-    fontSize: 17
+    fontSize: 16
   },
   subtitle: {
     fontSize: 12,
