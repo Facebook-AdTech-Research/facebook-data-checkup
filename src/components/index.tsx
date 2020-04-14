@@ -5,6 +5,7 @@ import CheckListButton from './CheckListButton';
 import EndCapButton from './EndCapButton';
 import FadeModal from './FadeModal';
 import Ghost from './Ghost';
+import GradientView from './GradientView';
 import Header from './Header';
 import Icon from './Icon';
 import IconBadge from './IconBadge';
@@ -25,6 +26,7 @@ export {
   EndCapButton,
   FadeModal,
   Ghost,
+  GradientView,
   Header,
   Icon,
   IconBadge,
