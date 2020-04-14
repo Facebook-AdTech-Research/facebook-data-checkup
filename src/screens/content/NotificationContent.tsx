@@ -5,7 +5,7 @@ import { useSafeArea } from 'react-native-safe-area-context';
 import { theme } from '@constants';
 import { HeaderHeight } from '@services/utils';
 import { NavigationTypes } from '@types';
-import { Text, Icon } from '@components';
+import { Text, Icon, GradientView } from '@components';
 
 const NotificationContent: React.FC<{
   navigation: NavigationTypes.ParamType;
@@ -44,8 +44,18 @@ const NotificationContent: React.FC<{
         >
           <View style={styles.notificationImageArea}>
             <View style={styles.notificationImage}></View>
-            <View style={styles.notificationType}>
-              <Icon family="FontAwesome5" name="user" size={16} color={theme.COLORS.WHITE} solid={true} />
+
+            <View style={styles.notificationTypeWrapper}>
+              <GradientView style={styles.notificationType} colors={theme.GRADIENT.BLUE} end={[0, 1]}>
+                <Icon
+                  style={styles.notificationTypeIcon}
+                  family="FontAwesome5"
+                  name="user"
+                  size={16}
+                  color={theme.COLORS.WHITE}
+                  solid={true}
+                />
+              </GradientView>
             </View>
           </View>
 
@@ -176,10 +186,28 @@ const styles = StyleSheet.create({
     borderRadius: 38,
     backgroundColor: theme.COLORS.FACEBOOK_GRAY
   },
-  notificationType: {
+  notificationTypeWrapper: {
     position: 'absolute',
     bottom: 0,
-    right: 0
+    right: 0,
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    shadowOffset: { width: 0, height: 1 },
+    shadowColor: theme.COLORS.BLACK
+  },
+  notificationType: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  notificationTypeIcon: {
+    shadowOpacity: 0.3,
+    shadowRadius: 1,
+    shadowOffset: { width: 0, height: 1 },
+    shadowColor: theme.COLORS.BLACK
   },
   notificationTextArea: {
     flexGrow: 1,
