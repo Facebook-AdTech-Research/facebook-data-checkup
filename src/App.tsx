@@ -13,6 +13,7 @@ import { setTopLevelNavigator } from '@navigation/NavigationService';
 enableScreens();
 
 const assetImages: Array<any> = [
+  Images.IconFacebook,
   Images.IconHome,
   Images.IconUser,
   Images.IconGroup,

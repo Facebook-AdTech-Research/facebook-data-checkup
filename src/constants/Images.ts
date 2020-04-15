@@ -1,3 +1,5 @@
+const IconFacebook = require('../../assets/icon.png');
+
 const IconHome = require('../../assets/imgs/icon-home.png');
 const IconUser = require('../../assets/imgs/icon-user.png');
 const IconGroup = require('../../assets/imgs/icon-group.png');
@@ -11,6 +13,7 @@ const JenWu = require('../../assets/imgs/jen-wu.jpg');
 const ToniPantone = require('../../assets/imgs/toni-pantone.jpg');
 
 export default {
+  IconFacebook,
   IconHome,
   IconUser,
   IconGroup,

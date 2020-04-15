@@ -31,7 +31,13 @@ const NotificationContent: React.FC<{
     );
   };
 
-  const renderNotification = (image: any, name: string, time: string, unread: boolean) => {
+  const renderNotification = (
+    image: any,
+    type: string,
+    renderText: React.ReactElement,
+    time: string,
+    unread: boolean
+  ) => {
     return (
       <TouchableOpacity onPress={openCheckUp}>
         <View
@@ -49,22 +55,32 @@ const NotificationContent: React.FC<{
 
             <View style={styles.notificationTypeWrapper}>
               <GradientView style={styles.notificationType} colors={theme.GRADIENT.BLUE} end={[0, 1]}>
-                <Icon
-                  style={styles.notificationTypeIcon}
-                  family="FontAwesome5"
-                  name="user"
-                  size={14}
-                  color={theme.COLORS.WHITE}
-                  solid={true}
-                />
+                {type === 'user' && (
+                  <Icon
+                    style={styles.notificationTypeIcon}
+                    family="FontAwesome5"
+                    name="user"
+                    size={14}
+                    color={theme.COLORS.WHITE}
+                    solid={true}
+                  />
+                )}
+                {type === 'checkup' && (
+                  <Icon
+                    style={styles.notificationTypeIcon}
+                    family="FontAwesome5"
+                    name="shield-alt"
+                    size={14}
+                    color={theme.COLORS.WHITE}
+                    solid={true}
+                  />
+                )}
               </GradientView>
             </View>
           </View>
 
           <View style={styles.notificationTextArea}>
-            <Text style={styles.notificationContent}>
-              <Text style={styles.boldText}>{name}</Text> accepted your friend request.
-            </Text>
+            <Text style={styles.notificationContent}>{renderText}</Text>
             <Text style={styles.notificationTime}>{time}</Text>
           </View>
 
@@ -76,15 +92,38 @@ const NotificationContent: React.FC<{
     );
   };
 
+  const renderUserNotification = (image: any, name: string, time: string, unread: boolean) => {
+    return renderNotification(
+      image,
+      'user',
+      <React.Fragment>
+        <Text style={styles.boldText}>{name}</Text> accepted your friend request.
+      </React.Fragment>,
+      time,
+      unread
+    );
+  };
+
+  const renderCheckUpNotification = (time: string, unread: boolean) => {
+    return renderNotification(
+      Images.IconFacebook,
+      'checkup',
+      <React.Fragment>To protect your privacy, please review the data being shared with advertisers.</React.Fragment>,
+      time,
+      unread
+    );
+  };
+
   const renderContent = () => {
     return (
       <View style={styles.content}>
         <Text style={styles.earlierText}>Earlier</Text>
 
-        {renderNotification(Images.DillonKorman, 'Dillon Korman', '2d', false)}
-        {renderNotification(Images.JennyMcKendry, 'Jenny McKendry', '2d', false)}
-        {renderNotification(Images.JenWu, 'Jen Wu', '2d', true)}
-        {renderNotification(Images.ToniPantone, 'Toni Pantone', '2d', true)}
+        {renderCheckUpNotification('5h', true)}
+        {renderUserNotification(Images.DillonKorman, 'Dillon Korman', '2d', false)}
+        {renderUserNotification(Images.JennyMcKendry, 'Jenny McKendry', '2d', false)}
+        {renderUserNotification(Images.JenWu, 'Jen Wu', '2d', true)}
+        {renderUserNotification(Images.ToniPantone, 'Toni Pantone', '2d', true)}
       </View>
     );
   };
@@ -171,7 +210,7 @@ const styles = StyleSheet.create({
   },
   notification: {
     width: '100%',
-    height: 85,
+    minHeight: 85,
     paddingHorizontal: 16,
     display: 'flex',
     flexDirection: 'row',
@@ -220,7 +259,8 @@ const styles = StyleSheet.create({
   notificationTextArea: {
     flexGrow: 1,
     flexShrink: 1,
-    paddingHorizontal: 12
+    paddingHorizontal: 12,
+    marginVertical: 8
   },
   notificationContent: {
     fontSize: 15,
