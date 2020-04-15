@@ -14,8 +14,21 @@ const NotificationContent: React.FC<{
 
   const [scrollOffset, setScrollOffset] = React.useState<number>(0);
 
+  const [unread, setUnread] = React.useState<{ [key: string]: boolean }>({
+    checkup: true,
+    'Dillon Korman': false,
+    'Jenny McKendry': false,
+    'Jen Wu': true,
+    'Toni Pantone': true
+  });
+
   const openCheckUp = () => {
     navigation.navigate('CheckUp');
+
+    setUnread({
+      ...unread,
+      checkup: false
+    });
   };
 
   const renderHeader = () => {
@@ -93,7 +106,7 @@ const NotificationContent: React.FC<{
     );
   };
 
-  const renderUserNotification = (image: any, name: string, time: string, unread: boolean) => {
+  const renderUserNotification = (image: any, name: string, time: string) => {
     return renderNotification(
       image,
       'user',
@@ -101,17 +114,22 @@ const NotificationContent: React.FC<{
         <Text style={styles.boldText}>{name}</Text> accepted your friend request.
       </React.Fragment>,
       time,
-      unread
+      unread[name],
+      () =>
+        setUnread({
+          ...unread,
+          [name]: false
+        })
     );
   };
 
-  const renderCheckUpNotification = (time: string, unread: boolean) => {
+  const renderCheckUpNotification = (time: string) => {
     return renderNotification(
       Images.IconFacebook,
       'checkup',
       <React.Fragment>To protect your privacy, please review the data being shared with advertisers.</React.Fragment>,
       time,
-      unread,
+      unread.checkup,
       openCheckUp
     );
   };
@@ -121,11 +139,11 @@ const NotificationContent: React.FC<{
       <View style={styles.content}>
         <Text style={styles.earlierText}>Earlier</Text>
 
-        {renderCheckUpNotification('5h', true)}
-        {renderUserNotification(Images.DillonKorman, 'Dillon Korman', '2d', false)}
-        {renderUserNotification(Images.JennyMcKendry, 'Jenny McKendry', '2d', false)}
-        {renderUserNotification(Images.JenWu, 'Jen Wu', '2d', true)}
-        {renderUserNotification(Images.ToniPantone, 'Toni Pantone', '2d', true)}
+        {renderCheckUpNotification('5h')}
+        {renderUserNotification(Images.DillonKorman, 'Dillon Korman', '2d')}
+        {renderUserNotification(Images.JennyMcKendry, 'Jenny McKendry', '2d')}
+        {renderUserNotification(Images.JenWu, 'Jen Wu', '2d')}
+        {renderUserNotification(Images.ToniPantone, 'Toni Pantone', '2d')}
       </View>
     );
   };
