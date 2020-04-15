@@ -52,7 +52,9 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    borderBottomColor: theme.COLORS.SUPER_LIGHT_GRAY,
+    borderBottomWidth: 1
   },
   textContainer: {
     display: 'flex',

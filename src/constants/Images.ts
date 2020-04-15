@@ -6,6 +6,9 @@ const IconGroup = require('../../assets/imgs/icon-group.png');
 const IconBell = require('../../assets/imgs/icon-bell.png');
 const IconMenu = require('../../assets/imgs/icon-menu.png');
 
+const AdPrefs = require('../../assets/imgs/ad-prefs.png');
+const CheckUpTop = require('../../assets/imgs/checkup-top.png');
+
 const DillonKorman = require('../../assets/imgs/dillon-korman.jpg');
 const JeffTaylorChang = require('../../assets/imgs/jeff-taylorchang.jpg');
 const JennyMcKendry = require('../../assets/imgs/jenny-mckendry.jpg');
@@ -19,6 +22,8 @@ export default {
   IconGroup,
   IconBell,
   IconMenu,
+  AdPrefs,
+  CheckUpTop,
   DillonKorman,
   JeffTaylorChang,
   JennyMcKendry,
