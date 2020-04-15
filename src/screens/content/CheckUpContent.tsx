@@ -18,7 +18,7 @@ const CheckUpContent: React.FC<{
 
   return (
     <View style={styles.flex}>
-      <Header title="Manage Data" showBackButton={true} onPressBackButton={goBack} />
+      <Header title="Privacy Checkup" showBackButton={true} onPressBackButton={goBack} />
 
       <View
         style={[
