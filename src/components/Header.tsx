@@ -26,7 +26,7 @@ const Header: React.FC<{
           }
         ]}
       >
-        {showBackButton && <BackButton onPress={onPressBackButton} />}
+        {showBackButton && <BackButton onPress={onPressBackButton} color={theme.COLORS.GRAY_BLUE} />}
 
         <View style={styles.textContainer}>
           <Text style={styles.title}>{title}</Text>
@@ -60,7 +60,8 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   title: {
-    fontSize: 16
+    fontSize: 17,
+    fontWeight: '500'
   },
   subtitle: {
     fontSize: 12,
