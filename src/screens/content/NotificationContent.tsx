@@ -36,10 +36,11 @@ const NotificationContent: React.FC<{
     type: string,
     renderText: React.ReactElement,
     time: string,
-    unread: boolean
+    unread: boolean,
+    onPress?: () => void
   ) => {
     return (
-      <TouchableOpacity onPress={openCheckUp}>
+      <TouchableOpacity onPress={onPress}>
         <View
           style={[
             styles.notification,
@@ -110,7 +111,8 @@ const NotificationContent: React.FC<{
       'checkup',
       <React.Fragment>To protect your privacy, please review the data being shared with advertisers.</React.Fragment>,
       time,
-      unread
+      unread,
+      openCheckUp
     );
   };
 
