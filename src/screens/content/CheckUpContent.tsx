@@ -12,13 +12,29 @@ const CheckUpContent: React.FC<{
 }> = ({ navigation }) => {
   const insets = useSafeArea();
 
+  const [useAcrossFacebook, setUseAcrossFacebook] = React.useState<boolean>(true);
+  const [useOtherBusinesses, setUseOtherBusinesses] = React.useState<boolean>(false);
+  const [useOtherWebsites, setUseOtherWebsites] = React.useState<boolean>(false);
+  const [useLocation, setUseLocation] = React.useState<boolean>(true);
+
   const goBack = () => {
     navigation.goBack();
   };
 
-  const renderCardButton = (image: any, icon: any, label: string, border: boolean = true) => {
+  const renderCheckbox = checked => {
     return (
-      <TouchableOpacity>
+      <Icon
+        family="MaterialCommunityIcons"
+        name={checked ? 'checkbox-marked-outline' : 'checkbox-blank-outline'}
+        size={24}
+        color={theme.COLORS.BLACK}
+      />
+    );
+  };
+
+  const renderCardButton = (image: any, icon: any, label: string, border: boolean = true, onPress?: () => void) => {
+    return (
+      <TouchableOpacity onPress={onPress}>
         <View style={styles.cardButton}>
           <View style={styles.cardButtonImageWrapper}>
             {image !== null && <Image style={styles.cardButtonImage} source={image} resizeMode="contain" />}
@@ -79,45 +95,27 @@ const CheckUpContent: React.FC<{
               <View style={styles.cardButtonArea}>
                 {renderCardButton(
                   null,
-                  <Icon
-                    family="MaterialCommunityIcons"
-                    name="checkbox-marked-outline"
-                    size={24}
-                    color={theme.COLORS.BLACK}
-                  />,
-                  'Activity across Facebook products'
+                  renderCheckbox(useAcrossFacebook),
+                  'Activity across Facebook products',
+                  true,
+                  () => setUseAcrossFacebook(!useAcrossFacebook)
                 )}
                 {renderCardButton(
                   null,
-                  <Icon
-                    family="MaterialCommunityIcons"
-                    name="checkbox-blank-outline"
-                    size={24}
-                    color={theme.COLORS.BLACK}
-                  />,
-                  'Activity with other businesses'
+                  renderCheckbox(useOtherBusinesses),
+                  'Activity with other businesses',
+                  true,
+                  () => setUseOtherBusinesses(!useOtherBusinesses)
                 )}
                 {renderCardButton(
                   null,
-                  <Icon
-                    family="MaterialCommunityIcons"
-                    name="checkbox-blank-outline"
-                    size={24}
-                    color={theme.COLORS.BLACK}
-                  />,
+                  renderCheckbox(useOtherWebsites),
                   'Activity on other websites and apps',
-                  true
+                  true,
+                  () => setUseOtherWebsites(!useOtherWebsites)
                 )}
-                {renderCardButton(
-                  null,
-                  <Icon
-                    family="MaterialCommunityIcons"
-                    name="checkbox-marked-outline"
-                    size={24}
-                    color={theme.COLORS.BLACK}
-                  />,
-                  'Your location',
-                  false
+                {renderCardButton(null, renderCheckbox(useLocation), 'Your location', false, () =>
+                  setUseLocation(!useLocation)
                 )}
               </View>
             </View>
