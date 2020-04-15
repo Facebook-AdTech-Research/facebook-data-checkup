@@ -49,7 +49,7 @@ export default {
     RED: ['#FF7C6E', '#F5317F'],
     YELLOW: ['#FFDF40', '#FF8359'],
     GRAY: ['#B6B6B6', '#494949'],
-    BLUE: ['#59C2FF', '#1270E3'],
+    BLUE: ['#17AAFF', '#1270E3'],
     LIGHT_BLUE: ['#17BDEA', '#6078EA']
   }
 };
