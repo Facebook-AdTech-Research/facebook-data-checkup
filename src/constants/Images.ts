@@ -9,8 +9,9 @@ const IconHat = require('../../assets/imgs/icon-hat.png');
 const IconNews = require('../../assets/imgs/icon-news.png');
 const IconThreeDots = require('../../assets/imgs/icon-three-dots.png');
 
-const AdPrefs = require('../../assets/imgs/ad-prefs.png');
 const CheckUpTop = require('../../assets/imgs/checkup-top.png');
+const AdCheckUp = require('../../assets/imgs/ad-checkup.png');
+const AdPrefs = require('../../assets/imgs/ad-prefs.png');
 
 const DillonKorman = require('../../assets/imgs/dillon-korman.jpg');
 const JeffTaylorChang = require('../../assets/imgs/jeff-taylorchang.jpg');
@@ -28,8 +29,9 @@ export default {
   IconHat,
   IconNews,
   IconThreeDots,
-  AdPrefs,
   CheckUpTop,
+  AdCheckUp,
+  AdPrefs,
   DillonKorman,
   JeffTaylorChang,
   JennyMcKendry,

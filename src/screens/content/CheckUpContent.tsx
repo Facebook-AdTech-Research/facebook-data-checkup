@@ -3,7 +3,7 @@ import { StyleSheet, Image, View, ScrollView, TouchableOpacity } from 'react-nat
 import { useSafeArea } from 'react-native-safe-area-context';
 
 import { theme, Images } from '@constants';
-import { Header, Text } from '@components';
+import { Header, Text, Icon } from '@components';
 import { NavigationTypes } from '@types';
 import { HeaderHeight } from '@services/utils';
 
@@ -16,11 +16,14 @@ const CheckUpContent: React.FC<{
     navigation.goBack();
   };
 
-  const renderCardButton = (icon: any, label: string, border: boolean = true) => {
+  const renderCardButton = (image: any, icon: any, label: string, border: boolean = true) => {
     return (
       <TouchableOpacity>
         <View style={styles.cardButton}>
-          <Image style={styles.cardButtonImage} source={icon} resizeMode="contain" />
+          <View style={styles.cardButtonImageWrapper}>
+            {image !== null && <Image style={styles.cardButtonImage} source={image} resizeMode="contain" />}
+            {icon !== null && icon}
+          </View>
 
           <View
             style={[
@@ -55,15 +58,69 @@ const CheckUpContent: React.FC<{
             <Image style={styles.headerImage} source={Images.CheckUpTop} resizeMode="contain" />
           </View>
 
-          <View
-            style={[
-              styles.content,
-              {
-                paddingBottom: insets.bottom
-              }
-            ]}
-          >
+          <View style={styles.content}>
             <Text style={styles.headerText}>Quick access to control your privacy and ad preferences</Text>
+
+            <View style={styles.card}>
+              <View style={styles.cardImageWrapper}>
+                <Image style={styles.cardImage} source={Images.AdCheckUp} resizeMode="contain" />
+              </View>
+
+              <View style={styles.cardContent}>
+                <View style={styles.cardTitleArea}>
+                  <Text style={styles.cardTitle}>Data Usage</Text>
+                  <Text style={styles.cardSubtitle}>
+                    We want you to know how data is used to show you ads without advertisers knowing who you are.
+                    Protecting people's privacy is central to how we've designed our ad system.
+                  </Text>
+                </View>
+              </View>
+
+              <View style={styles.cardButtonArea}>
+                {renderCardButton(
+                  null,
+                  <Icon
+                    family="MaterialCommunityIcons"
+                    name="checkbox-marked-outline"
+                    size={24}
+                    color={theme.COLORS.BLACK}
+                  />,
+                  'Activity across Facebook products'
+                )}
+                {renderCardButton(
+                  null,
+                  <Icon
+                    family="MaterialCommunityIcons"
+                    name="checkbox-blank-outline"
+                    size={24}
+                    color={theme.COLORS.BLACK}
+                  />,
+                  'Activity with other businesses'
+                )}
+                {renderCardButton(
+                  null,
+                  <Icon
+                    family="MaterialCommunityIcons"
+                    name="checkbox-blank-outline"
+                    size={24}
+                    color={theme.COLORS.BLACK}
+                  />,
+                  'Activity on other websites and apps',
+                  true
+                )}
+                {renderCardButton(
+                  null,
+                  <Icon
+                    family="MaterialCommunityIcons"
+                    name="checkbox-marked-outline"
+                    size={24}
+                    color={theme.COLORS.BLACK}
+                  />,
+                  'Your location',
+                  false
+                )}
+              </View>
+            </View>
 
             <View style={styles.card}>
               <View style={styles.cardImageWrapper}>
@@ -80,9 +137,9 @@ const CheckUpContent: React.FC<{
               </View>
 
               <View style={styles.cardButtonArea}>
-                {renderCardButton(Images.IconHat, 'Learn about ads')}
-                {renderCardButton(Images.IconNews, 'Review your ad preferences')}
-                {renderCardButton(Images.IconThreeDots, 'See your ad settings', false)}
+                {renderCardButton(Images.IconHat, null, 'Learn about ads')}
+                {renderCardButton(Images.IconNews, null, 'Review your ad preferences')}
+                {renderCardButton(Images.IconThreeDots, null, 'See your ad settings', false)}
               </View>
             </View>
           </View>
@@ -135,6 +192,7 @@ const styles = StyleSheet.create({
   card: {
     minHeight: 48,
     marginHorizontal: 16,
+    marginBottom: 16,
     borderRadius: 8,
     backgroundColor: theme.COLORS.WHITE,
     shadowRadius: 40,
@@ -180,9 +238,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center'
   },
-  cardButtonImage: {
+  cardButtonImageWrapper: {
     width: 24,
     height: 24
+  },
+  cardButtonImage: {
+    width: '100%',
+    height: '100%'
   },
   cardButtonLabelWrapper: {
     marginLeft: 12,

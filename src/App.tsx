@@ -27,8 +27,9 @@ const assetImages: Array<any> = [
   Images.JennyMcKendry,
   Images.JenWu,
   Images.ToniPantone,
-  Images.AdPrefs,
-  Images.CheckUpTop
+  Images.CheckUpTop,
+  Images.AdCheckUp,
+  Images.AdPrefs
 ];
 
 function cacheImages(images: any) {
