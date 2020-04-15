@@ -18,7 +18,7 @@ const CheckUpContent: React.FC<{
 
   return (
     <View style={styles.flex}>
-      <Header title="Shared Data" showBackButton={true} onPressBackButton={goBack} />
+      <Header title="Manage Data" showBackButton={true} onPressBackButton={goBack} />
 
       <View
         style={[

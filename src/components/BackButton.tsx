@@ -18,9 +18,9 @@ const BackButton: React.FC<{
           style={{
             opacity: computedOpacity
           }}
-          family="MaterialIcons"
-          name="keyboard-arrow-left"
-          size={36}
+          family="Entypo"
+          name="chevron-left"
+          size={28}
           color={color}
         />
       </TouchableOpacity>
@@ -32,14 +32,15 @@ const styles = StyleSheet.create({
   wrapper: {
     position: 'absolute',
     left: 0,
-    width: 42,
+    width: 36,
     height: 42
   },
   button: {
     height: 42,
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 });
 

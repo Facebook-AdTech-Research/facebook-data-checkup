@@ -26,7 +26,7 @@ const Header: React.FC<{
           }
         ]}
       >
-        {showBackButton && <BackButton onPress={onPressBackButton} color={theme.COLORS.GRAY_BLUE} />}
+        {showBackButton && <BackButton onPress={onPressBackButton} color={theme.COLORS.BLACK} />}
 
         <View style={styles.textContainer}>
           <Text style={styles.title}>{title}</Text>
