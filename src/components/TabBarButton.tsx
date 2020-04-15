@@ -28,7 +28,9 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    borderTopColor: theme.COLORS.SUPER_LIGHT_GRAY,
+    borderTopWidth: 1
   },
   container: {
     width: '90%',

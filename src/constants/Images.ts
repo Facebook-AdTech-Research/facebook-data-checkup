@@ -5,6 +5,9 @@ const IconUser = require('../../assets/imgs/icon-user.png');
 const IconGroup = require('../../assets/imgs/icon-group.png');
 const IconBell = require('../../assets/imgs/icon-bell.png');
 const IconMenu = require('../../assets/imgs/icon-menu.png');
+const IconHat = require('../../assets/imgs/icon-hat.png');
+const IconNews = require('../../assets/imgs/icon-news.png');
+const IconThreeDots = require('../../assets/imgs/icon-three-dots.png');
 
 const AdPrefs = require('../../assets/imgs/ad-prefs.png');
 const CheckUpTop = require('../../assets/imgs/checkup-top.png');
@@ -22,6 +25,9 @@ export default {
   IconGroup,
   IconBell,
   IconMenu,
+  IconHat,
+  IconNews,
+  IconThreeDots,
   AdPrefs,
   CheckUpTop,
   DillonKorman,

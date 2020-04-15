@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Image, View, ScrollView } from 'react-native';
+import { StyleSheet, Image, View, ScrollView, TouchableOpacity } from 'react-native';
 import { useSafeArea } from 'react-native-safe-area-context';
 
 import { theme, Images } from '@constants';
@@ -14,6 +14,27 @@ const CheckUpContent: React.FC<{
 
   const goBack = () => {
     navigation.goBack();
+  };
+
+  const renderCardButton = (icon: any, label: string, border: boolean = true) => {
+    return (
+      <TouchableOpacity>
+        <View style={styles.cardButton}>
+          <Image style={styles.cardButtonImage} source={icon} resizeMode="contain" />
+
+          <View
+            style={[
+              styles.cardButtonLabelWrapper,
+              !border && {
+                borderBottomWidth: 0
+              }
+            ]}
+          >
+            <Text style={styles.cardButtonLabel}>{label}</Text>
+          </View>
+        </View>
+      </TouchableOpacity>
+    );
   };
 
   return (
@@ -56,6 +77,12 @@ const CheckUpContent: React.FC<{
                     Learn how ads work on Facebook and how we use data to make the ads you see more relevant.
                   </Text>
                 </View>
+              </View>
+
+              <View style={styles.cardButtonArea}>
+                {renderCardButton(Images.IconHat, 'Learn about ads')}
+                {renderCardButton(Images.IconNews, 'Review your ad preferences')}
+                {renderCardButton(Images.IconThreeDots, 'See your ad settings', false)}
               </View>
             </View>
           </View>
@@ -144,6 +171,29 @@ const styles = StyleSheet.create({
     fontSize: 17,
     lineHeight: 22,
     color: theme.COLORS.DARK_GRAY
+  },
+  cardButtonArea: {
+    marginLeft: 18
+  },
+  cardButton: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  cardButtonImage: {
+    width: 24,
+    height: 24
+  },
+  cardButtonLabelWrapper: {
+    marginLeft: 12,
+    flexGrow: 1,
+    borderBottomColor: theme.COLORS.SUPER_LIGHT_GRAY,
+    borderBottomWidth: 2
+  },
+  cardButtonLabel: {
+    paddingVertical: 13,
+    fontSize: 16,
+    color: theme.COLORS.GRAY_BLUE
   }
 });
 
