@@ -1,5 +1,13 @@
 import React from 'react';
-import { StyleSheet, Dimensions, Image, View, ScrollView, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet,
+  Dimensions,
+  Image,
+  View,
+  ScrollView,
+  TouchableOpacity,
+  TouchableWithoutFeedback
+} from 'react-native';
 import { useSafeArea } from 'react-native-safe-area-context';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 
@@ -18,6 +26,8 @@ const CheckUpContent: React.FC<{
   navigation: NavigationTypes.ParamType;
 }> = ({ navigation }) => {
   const insets = useSafeArea();
+
+  const scrollRef = React.useRef(undefined);
 
   const [useData, setUseData] = React.useState<{ [key: string]: boolean }>({
     'Activity across Facebook products': true,
@@ -41,25 +51,34 @@ const CheckUpContent: React.FC<{
     [useData]
   );
 
+  const onPressCarousel = React.useCallback(
+    (item: TCarouselData) => {
+      scrollRef?.current?.scrollTo({ y: 300 });
+    },
+    [scrollRef]
+  );
+
   const renderCarouselItem = ({ item, index }: { item: TCarouselData; index: number }) => {
     return (
-      <View key={index} style={styles.carouselItem}>
-        <View style={styles.shadow} />
-        <View style={styles.carouselItemContent}>
-          <Text
-            style={[
-              styles.carouselTitle,
-              !useData[item.dataType] && {
-                color: theme.COLORS.GRAY
-              }
-            ]}
-          >
-            {item.dataType}
-          </Text>
+      <TouchableWithoutFeedback key={index} onPress={() => onPressCarousel(item)}>
+        <View style={styles.carouselItem}>
+          <View style={styles.shadow} />
+          <View style={styles.carouselItemContent}>
+            <Text
+              style={[
+                styles.carouselTitle,
+                !useData[item.dataType] && {
+                  color: theme.COLORS.GRAY
+                }
+              ]}
+            >
+              {item.dataType}
+            </Text>
 
-          <Text style={styles.carouselDescription}>{item.description}</Text>
+            <Text style={styles.carouselDescription}>{item.description}</Text>
+          </View>
         </View>
-      </View>
+      </TouchableWithoutFeedback>
     );
   };
 
@@ -129,7 +148,7 @@ const CheckUpContent: React.FC<{
           }
         ]}
       >
-        <ScrollView contentContainerStyle={styles.scrollContent}>
+        <ScrollView ref={ref => (scrollRef.current = ref)} contentContainerStyle={styles.scrollContent}>
           <View style={styles.behindContent} />
           <View style={styles.headerImageWrapper}>
             <Image style={styles.headerImage} source={Images.CheckUpTop} resizeMode="contain" />
