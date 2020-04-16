@@ -29,7 +29,22 @@ const assetImages: Array<any> = [
   Images.ToniPantone,
   Images.CheckUpTop,
   Images.AdCheckUp,
-  Images.AdPrefs
+  Images.AdPrefs,
+  Images.AdFightingIllini,
+  Images.AdChipotle,
+  Images.AdNetflix,
+  Images.AdAdobe,
+  Images.AdQuartz,
+  Images.AdDisneyPlus,
+  Images.AdRobinhood,
+  Images.AdSalesforce,
+  Images.AdDropbox,
+  Images.AdApple,
+  Images.AdAmazon,
+  Images.AdUber,
+  Images.AdMuseum,
+  Images.AdFenway,
+  Images.AdStowOrchards
 ];
 
 function cacheImages(images: any) {

@@ -21,7 +21,7 @@ const { width, height } = Dimensions.get('screen');
 
 const sliderWidth = width;
 const entryWidth = width - 32;
-const entryHeight = 256;
+const entryHeight = 260;
 
 const CheckUpContent: React.FC<{
   navigation: NavigationTypes.ParamType;
@@ -32,7 +32,7 @@ const CheckUpContent: React.FC<{
 
   const [useData, setUseData] = React.useState<{ [key: string]: boolean }>({
     'Activity across Facebook products': true,
-    'Activity on other websites, apps': true,
+    'Activity on other websites and apps': true,
     'Accounts with other businesses': true,
     'Your declared interests': true,
     'Your location': true
@@ -54,7 +54,7 @@ const CheckUpContent: React.FC<{
 
   const onPressCarousel = React.useCallback(
     (item: TCarouselData) => {
-      scrollRef?.current?.scrollTo({ y: 356 });
+      scrollRef?.current?.scrollTo({ y: 360 });
     },
     [scrollRef]
   );
@@ -86,6 +86,13 @@ const CheckUpContent: React.FC<{
                 }
               ]}
             >
+              <View style={styles.recentAdsImages}>
+                {item.images.map((image, index) => (
+                  <View key={index} style={styles.adImageWrapper}>
+                    <Image style={styles.adImage} source={image} resizeMode="cover" />
+                  </View>
+                ))}
+              </View>
               <Text>
                 <Text style={styles.bold}>Recent: </Text>
                 {item.adDescription}
@@ -153,7 +160,7 @@ const CheckUpContent: React.FC<{
 
   return (
     <View style={styles.flex}>
-      <Header title="Privacy Checkup" showBackButton={true} onPressBackButton={goBack} />
+      <Header title="Ad Privacy Checkup" showBackButton={true} onPressBackButton={goBack} />
 
       <View
         style={[
@@ -316,6 +323,23 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingBottom: 0,
     justifyContent: 'flex-end'
+  },
+  recentAdsImages: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    marginBottom: 4
+  },
+  adImageWrapper: {
+    width: 36,
+    height: 36,
+    marginRight: 4,
+    borderColor: theme.COLORS.LIGHT_BORDER,
+    borderWidth: 1
+  },
+  adImage: {
+    width: '100%',
+    height: '100%'
   },
   card: {
     minHeight: 48,
