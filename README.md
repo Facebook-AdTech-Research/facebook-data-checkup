@@ -20,7 +20,7 @@ The app was built in `React Native` which is the framework used by Facebook.
 
 A semi-regular notification to provide the user with a reminder, as well as access, to their settings
 
-<img src="README/notifications-page.png"/>
+<img src="README/notifications-page.png" width="256"/>
 
 #### Checkup Page
 
@@ -28,11 +28,11 @@ A new page proposal for Facebook that includes explanations of what data is give
 
 The page includes subtle interaction details such as a card carousel for each data type, clicking on a card scrolls the user down to the buttons to change the settings, and a jump off point to reach the full verbose settings if necessary.
 
-<img src="README/checkup-page.png"/>
+<img src="README/checkup-page.png" width="256"/>
 
-<img src="README/quick-controls.png"/>
+<img src="README/quick-controls.png" width="256"/>
 
-<img src="README/data-management.png"/>
+<img src="README/data-management.png" width="256"/>
 
 ##### Disclaimer
 
