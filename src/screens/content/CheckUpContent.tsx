@@ -64,28 +64,19 @@ const CheckUpContent: React.FC<{
       <TouchableWithoutFeedback key={index} onPress={() => onPressCarousel(item)}>
         <View style={styles.carouselItem}>
           <View style={styles.shadow} />
-          <View style={styles.carouselItemContent}>
-            <Text
-              style={[
-                styles.carouselTitle,
-                !useData[item.dataType] && {
-                  opacity: 0.4
-                }
-              ]}
-            >
-              {item.dataType}
-            </Text>
+          <View
+            style={[
+              styles.carouselItemContent,
+              !useData[item.dataType] && {
+                opacity: 0.4
+              }
+            ]}
+          >
+            <Text style={styles.carouselTitle}>{item.dataType}</Text>
 
             <Text style={styles.carouselDescription}>{item.description}</Text>
 
-            <View
-              style={[
-                styles.recentAdsContainer,
-                !useData[item.dataType] && {
-                  opacity: 0.4
-                }
-              ]}
-            >
+            <View style={styles.recentAdsContainer}>
               <View style={styles.recentAdsImages}>
                 {item.images.map((image, index) => (
                   <View key={index} style={styles.adImageWrapper}>
