@@ -13,8 +13,8 @@ const CheckUpContent: React.FC<{
   const insets = useSafeArea();
 
   const [useAcrossFacebook, setUseAcrossFacebook] = React.useState<boolean>(true);
-  const [useOtherBusinesses, setUseOtherBusinesses] = React.useState<boolean>(false);
   const [useOtherWebsites, setUseOtherWebsites] = React.useState<boolean>(false);
+  const [useOtherBusinesses, setUseOtherBusinesses] = React.useState<boolean>(false);
   const [useInterests, setUseInterests] = React.useState<boolean>(true);
   const [useLocation, setUseLocation] = React.useState<boolean>(true);
 
@@ -104,17 +104,17 @@ const CheckUpContent: React.FC<{
                 )}
                 {renderCardButton(
                   null,
-                  renderCheckbox(useOtherBusinesses),
-                  'Activity with other businesses',
-                  true,
-                  () => setUseOtherBusinesses(!useOtherBusinesses)
-                )}
-                {renderCardButton(
-                  null,
                   renderCheckbox(useOtherWebsites),
                   'Activity on other websites and apps',
                   true,
                   () => setUseOtherWebsites(!useOtherWebsites)
+                )}
+                {renderCardButton(
+                  null,
+                  renderCheckbox(useOtherBusinesses),
+                  'Accounts with other businesses',
+                  true,
+                  () => setUseOtherBusinesses(!useOtherBusinesses)
                 )}
                 {renderCardButton(null, renderCheckbox(useInterests), 'Your declared interests', true, () =>
                   setUseInterests(!useInterests)
