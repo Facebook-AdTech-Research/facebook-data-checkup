@@ -22,14 +22,14 @@ const NotificationContent: React.FC<{
     'Toni Pantone': true
   });
 
-  const openCheckUp = () => {
+  const openCheckUp = React.useCallback(() => {
     navigation.navigate('CheckUp');
 
     setUnread({
       ...unread,
       checkup: false
     });
-  };
+  }, [unread]);
 
   const renderHeader = () => {
     return (

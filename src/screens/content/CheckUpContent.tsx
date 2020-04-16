@@ -1,25 +1,85 @@
 import React from 'react';
-import { StyleSheet, Image, View, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Dimensions, Image, View, ScrollView, TouchableOpacity } from 'react-native';
 import { useSafeArea } from 'react-native-safe-area-context';
+import Carousel, { Pagination } from 'react-native-snap-carousel';
 
 import { theme, Images } from '@constants';
 import { Header, Text, Icon } from '@components';
 import { NavigationTypes } from '@types';
 import { HeaderHeight } from '@services/utils';
+import CAROUSEL_DATA, { TCarouselData } from '@constants/CarouselData';
+
+const { width, height } = Dimensions.get('screen');
+
+const sliderWidth = width;
+const entryWidth = width - 32;
 
 const CheckUpContent: React.FC<{
   navigation: NavigationTypes.ParamType;
 }> = ({ navigation }) => {
   const insets = useSafeArea();
 
-  const [useAcrossFacebook, setUseAcrossFacebook] = React.useState<boolean>(true);
-  const [useOtherWebsites, setUseOtherWebsites] = React.useState<boolean>(false);
-  const [useOtherBusinesses, setUseOtherBusinesses] = React.useState<boolean>(false);
-  const [useInterests, setUseInterests] = React.useState<boolean>(true);
-  const [useLocation, setUseLocation] = React.useState<boolean>(true);
+  const [useData, setUseData] = React.useState<{ [key: string]: boolean }>({
+    'Activity across Facebook products': true,
+    'Activity on other websites and apps': false,
+    'Accounts with other businesses': false,
+    'Your declared interests': true,
+    'Your location': true
+  });
 
   const goBack = () => {
     navigation.goBack();
+  };
+
+  const toggleUseData = React.useCallback(
+    (dataType: string) => {
+      setUseData({
+        ...useData,
+        [dataType]: !useData[dataType]
+      });
+    },
+    [useData]
+  );
+
+  const renderCarouselItem = ({ item, index }: { item: TCarouselData; index: number }) => {
+    return (
+      <View key={index} style={styles.carouselItem}>
+        <View style={styles.shadow} />
+        <View style={styles.carouselItemContent}>
+          <Text
+            style={[
+              styles.carouselTitle,
+              !useData[item.dataType] && {
+                color: theme.COLORS.GRAY
+              }
+            ]}
+          >
+            {item.dataType}
+          </Text>
+
+          <Text style={styles.carouselDescription}>{item.description}</Text>
+        </View>
+      </View>
+    );
+  };
+
+  const renderCarousel = () => {
+    return (
+      <View style={styles.carouselContainer}>
+        <Carousel
+          data={CAROUSEL_DATA}
+          firstItem={0}
+          layout="stack"
+          renderItem={renderCarouselItem}
+          sliderWidth={sliderWidth}
+          itemWidth={entryWidth}
+          inactiveSlideOpacity={1}
+          hasParallaxImages={false}
+          loop={false}
+          autoplay={false}
+        />
+      </View>
+    );
   };
 
   const renderCheckbox = checked => {
@@ -78,6 +138,8 @@ const CheckUpContent: React.FC<{
           <View style={styles.content}>
             <Text style={styles.headerText}>Quick access to control your privacy and ad preferences</Text>
 
+            {renderCarousel()}
+
             <View style={styles.card}>
               <View style={styles.cardImageWrapper}>
                 <Image style={styles.cardImage} source={Images.AdCheckUp} resizeMode="contain" />
@@ -95,33 +157,17 @@ const CheckUpContent: React.FC<{
               </View>
 
               <View style={styles.cardButtonArea}>
-                {renderCardButton(
-                  null,
-                  renderCheckbox(useAcrossFacebook),
-                  'Activity across Facebook products',
-                  true,
-                  () => setUseAcrossFacebook(!useAcrossFacebook)
-                )}
-                {renderCardButton(
-                  null,
-                  renderCheckbox(useOtherWebsites),
-                  'Activity on other websites and apps',
-                  true,
-                  () => setUseOtherWebsites(!useOtherWebsites)
-                )}
-                {renderCardButton(
-                  null,
-                  renderCheckbox(useOtherBusinesses),
-                  'Accounts with other businesses',
-                  true,
-                  () => setUseOtherBusinesses(!useOtherBusinesses)
-                )}
-                {renderCardButton(null, renderCheckbox(useInterests), 'Your declared interests', true, () =>
-                  setUseInterests(!useInterests)
-                )}
-                {renderCardButton(null, renderCheckbox(useLocation), 'Your location', false, () =>
-                  setUseLocation(!useLocation)
-                )}
+                {CAROUSEL_DATA.map((entry: TCarouselData, index: number) => (
+                  <React.Fragment key={index}>
+                    {renderCardButton(
+                      null,
+                      renderCheckbox(useData[entry.dataType]),
+                      entry.dataType,
+                      index !== CAROUSEL_DATA.length - 1,
+                      () => toggleUseData(entry.dataType)
+                    )}
+                  </React.Fragment>
+                ))}
               </View>
             </View>
 
@@ -186,10 +232,50 @@ const styles = StyleSheet.create({
   },
   headerText: {
     marginTop: 12,
-    marginBottom: 16,
+    marginBottom: 0,
     marginHorizontal: 16,
     textAlign: 'center',
     fontSize: 17,
+    color: theme.COLORS.DARK_GRAY
+  },
+  carouselContainer: {
+    width: '100%',
+    height: 200
+  },
+  carouselItem: {
+    width: '100%',
+    height: '100%',
+    paddingVertical: 16,
+    borderRadius: 8
+  },
+  shadow: {
+    position: 'absolute',
+    top: 16,
+    left: 0,
+    right: 0,
+    bottom: 16,
+    borderRadius: 8,
+    backgroundColor: theme.COLORS.WHITE,
+    shadowRadius: 10,
+    shadowColor: theme.COLORS.BLACK,
+    shadowOpacity: 0.15,
+    shadowOffset: { width: 0, height: 4 }
+  },
+  carouselItemContent: {
+    width: '100%',
+    height: '100%',
+    paddingHorizontal: 18,
+    paddingVertical: 16,
+    borderRadius: 8,
+    backgroundColor: theme.COLORS.WHITE
+  },
+  carouselTitle: {
+    fontSize: 20,
+    fontWeight: '700'
+  },
+  carouselDescription: {
+    fontSize: 14,
+    lineHeight: 22,
     color: theme.COLORS.DARK_GRAY
   },
   card: {
