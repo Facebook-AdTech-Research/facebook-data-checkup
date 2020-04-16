@@ -15,6 +15,7 @@ const CheckUpContent: React.FC<{
   const [useAcrossFacebook, setUseAcrossFacebook] = React.useState<boolean>(true);
   const [useOtherBusinesses, setUseOtherBusinesses] = React.useState<boolean>(false);
   const [useOtherWebsites, setUseOtherWebsites] = React.useState<boolean>(false);
+  const [useInterests, setUseInterests] = React.useState<boolean>(true);
   const [useLocation, setUseLocation] = React.useState<boolean>(true);
 
   const goBack = () => {
@@ -113,6 +114,9 @@ const CheckUpContent: React.FC<{
                   'Activity on other websites and apps',
                   true,
                   () => setUseOtherWebsites(!useOtherWebsites)
+                )}
+                {renderCardButton(null, renderCheckbox(useInterests), 'Your declared interests', true, () =>
+                  setUseInterests(!useInterests)
                 )}
                 {renderCardButton(null, renderCheckbox(useLocation), 'Your location', false, () =>
                   setUseLocation(!useLocation)
