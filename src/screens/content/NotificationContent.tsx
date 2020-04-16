@@ -137,9 +137,14 @@ const NotificationContent: React.FC<{
   const renderContent = () => {
     return (
       <View style={styles.content}>
-        <Text style={styles.earlierText}>Earlier</Text>
+        <Text style={styles.earlierText}>New</Text>
 
         {renderCheckUpNotification('5h')}
+
+        <View style={styles.divider} />
+
+        <Text style={styles.earlierText}>Earlier</Text>
+
         {renderUserNotification(Images.DillonKorman, 'Dillon Korman', '2d')}
         {renderUserNotification(Images.JennyMcKendry, 'Jenny McKendry', '2d')}
         {renderUserNotification(Images.JenWu, 'Jen Wu', '2d')}
@@ -227,6 +232,12 @@ const styles = StyleSheet.create({
     marginBottom: 4,
     fontSize: 17,
     fontWeight: 'bold'
+  },
+  divider: {
+    marginHorizontal: 16,
+    marginVertical: 8,
+    borderBottomColor: theme.COLORS.BORDER,
+    borderBottomWidth: 1
   },
   notification: {
     width: '100%',

@@ -21,6 +21,7 @@ const { width, height } = Dimensions.get('screen');
 
 const sliderWidth = width;
 const entryWidth = width - 32;
+const entryHeight = 256;
 
 const CheckUpContent: React.FC<{
   navigation: NavigationTypes.ParamType;
@@ -31,8 +32,8 @@ const CheckUpContent: React.FC<{
 
   const [useData, setUseData] = React.useState<{ [key: string]: boolean }>({
     'Activity across Facebook products': true,
-    'Activity on other websites and apps': false,
-    'Accounts with other businesses': false,
+    'Activity on other websites, apps': true,
+    'Accounts with other businesses': true,
     'Your declared interests': true,
     'Your location': true
   });
@@ -53,7 +54,7 @@ const CheckUpContent: React.FC<{
 
   const onPressCarousel = React.useCallback(
     (item: TCarouselData) => {
-      scrollRef?.current?.scrollTo({ y: 300 });
+      scrollRef?.current?.scrollTo({ y: 356 });
     },
     [scrollRef]
   );
@@ -68,7 +69,7 @@ const CheckUpContent: React.FC<{
               style={[
                 styles.carouselTitle,
                 !useData[item.dataType] && {
-                  color: theme.COLORS.GRAY
+                  opacity: 0.4
                 }
               ]}
             >
@@ -76,6 +77,20 @@ const CheckUpContent: React.FC<{
             </Text>
 
             <Text style={styles.carouselDescription}>{item.description}</Text>
+
+            <View
+              style={[
+                styles.recentAdsContainer,
+                !useData[item.dataType] && {
+                  opacity: 0.4
+                }
+              ]}
+            >
+              <Text>
+                <Text style={styles.bold}>Recent: </Text>
+                {item.adDescription}
+              </Text>
+            </View>
           </View>
         </View>
       </TouchableWithoutFeedback>
@@ -259,7 +274,7 @@ const styles = StyleSheet.create({
   },
   carouselContainer: {
     width: '100%',
-    height: 200
+    height: entryHeight
   },
   carouselItem: {
     width: '100%',
@@ -296,6 +311,11 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 22,
     color: theme.COLORS.DARK_GRAY
+  },
+  recentAdsContainer: {
+    flex: 1,
+    paddingBottom: 0,
+    justifyContent: 'flex-end'
   },
   card: {
     minHeight: 48,
@@ -363,7 +383,10 @@ const styles = StyleSheet.create({
   cardButtonLabel: {
     paddingVertical: 13,
     fontSize: 16,
-    color: theme.COLORS.GRAY_BLUE
+    color: theme.COLORS.BLACK
+  },
+  bold: {
+    fontWeight: '600'
   }
 });
 

@@ -19,6 +19,13 @@ const JennyMcKendry = require('../../assets/imgs/jenny-mckendry.jpg');
 const JenWu = require('../../assets/imgs/jen-wu.jpg');
 const ToniPantone = require('../../assets/imgs/toni-pantone.jpg');
 
+const AdCreativeCloud = null;
+const AdQuartz = null;
+const AdDisneyPlus = null;
+const AdRobinhood = null;
+const AdSalesforce = null;
+const AdDropbox = null;
+
 export default {
   IconFacebook,
   IconHome,
@@ -36,5 +43,12 @@ export default {
   JeffTaylorChang,
   JennyMcKendry,
   JenWu,
-  ToniPantone
+  ToniPantone,
+
+  AdCreativeCloud,
+  AdQuartz,
+  AdDisneyPlus,
+  AdRobinhood,
+  AdSalesforce,
+  AdDropbox
 };
