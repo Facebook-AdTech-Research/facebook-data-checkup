@@ -168,7 +168,7 @@ const CheckUpContent: React.FC<{
           </View>
 
           <View style={styles.content}>
-            <Text style={styles.headerText}>Quick access to control your privacy and ad preferences</Text>
+            <Text style={styles.headerText}>Hi Jeff, let's review what data is being shared with advertisers!</Text>
 
             {renderCarousel()}
 
