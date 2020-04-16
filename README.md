@@ -1,4 +1,4 @@
-# facebook-data-checkup
+# facebook-data-checkup &middot;
 
 <img src="assets/icon.png#rounded" style="border-radius: 25%; overflow: hidden;" width="256"/>
 
@@ -13,6 +13,12 @@ The app was built in `React Native` which is the framework used by Facebook.
 | command      | description                                                  |
 | ------------ | ------------------------------------------------------------ |
 | `expo start` | run the development server. Add the `-c` flag to clear cache |
+
+## Demo
+
+[Facebook currently](https://drive.google.com/file/d/1rUAimT_Inx_6lK4KIYJyAfkjRMVjHHjN/view?usp=sharing)
+
+[Our proposal](https://drive.google.com/file/d/10o2Wo48ToOHCoJKLK79SqCgsU_jGYUX-/view?usp=sharing)
 
 ## Screenshots
 
