@@ -85,10 +85,11 @@ const CheckUpContent: React.FC<{
 
               <View style={styles.cardContent}>
                 <View style={styles.cardTitleArea}>
-                  <Text style={styles.cardTitle}>Data Usage</Text>
+                  <Text style={styles.cardTitle}>Ad Data Usage</Text>
                   <Text style={styles.cardSubtitle}>
-                    We want you to know how data is used to show you ads without advertisers knowing who you are.
-                    Protecting people's privacy is central to how we've designed our ad system.
+                    Protecting people's privacy is central to how we've designed our ad system. We will only use the
+                    data you have enabled below. You will still see the same number of ads but can control how we choose
+                    them.
                   </Text>
                 </View>
               </View>
