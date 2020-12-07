@@ -1,6 +1,6 @@
 # facebook-data-checkup &middot; Facebook Ad Privacy Prototype
 
-<img src="assets/icon.png#rounded" style="border-radius: 25%; overflow: hidden;" width="256"/>
+<img src="assets/icon.png" style="border-radius: 25%; overflow: hidden;" width="256"/>
 
 We did a research project on Facebook's ad privacy and preferences as well as user sentiment. We conducted research and recorded user interactions as they performed various tasks to identify the best way to improve the overall experience as well as improve users' trust in Facebook as a brand. The goal was to find a solution that would have the minimum negative impact on Facebook's revenue as well as the greatest positive impact on their brand and future success.
 
