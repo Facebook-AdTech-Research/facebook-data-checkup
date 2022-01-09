@@ -18,7 +18,7 @@ The app was built in `React Native` which is the framework used by Facebook.
 
 [Facebook currently](https://drive.google.com/file/d/1rUAimT_Inx_6lK4KIYJyAfkjRMVjHHjN/view?usp=sharing)
 
-[Our proposal](https://drive.google.com/file/d/10o2Wo48ToOHCoJKLK79SqCgsU_jGYUX-/view?usp=sharing)
+[Our proposal](https://youtu.be/PRv-jg_Ih5M)
 
 ## Screenshots
 
